@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/addPhotos"
+          android:title="@string/ADD_PHOTOS"
+          app:showAsAction="never">
+    </item>
+    <item android:id="@+id/selectPhoto"
+          android:title="@string/SELECT_PHOTOS"
+          app:showAsAction="never">
+    </item>
+    <item android:id="@+id/addAlbumToPlaylist"
+          android:title="@string/ADD_ALBUM_TO_PLAYLIST"
+          app:showAsAction="never">
+    </item>
+    <item android:id="@+id/editAlbumName"
+          android:title="@string/EDIT_ALBUM_NAME"
+          app:showAsAction="never">
+    </item>
+    <item android:id="@+id/deleteAlbum"
+          android:title="@string/DELETE_ALBUM"
+          app:showAsAction="never">
+    </item>
+</menu>
