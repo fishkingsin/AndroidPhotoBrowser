@@ -24,7 +24,12 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     private static final String KEY_CURRENT_POSITION = "CURRENT_POSITION";
 
     private List<CustomImage> images;
-    private ImageOverlayView overlayView;
+
+    public ImageOverlayView getOverlayView() {
+        return overlayView;
+    }
+
+    protected ImageOverlayView overlayView;
     private int currentPosition;
     private boolean isDialogShown;
     protected boolean[] selections;

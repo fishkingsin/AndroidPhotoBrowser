@@ -27,6 +27,11 @@ public class ImageOverlayView extends RelativeLayout {
     private TextView tvDescription;
 
     private String sharingText;
+
+    public void setListener(ImageOverlayVieListener listener) {
+        this.listener = listener;
+    }
+
     ImageOverlayVieListener listener = null;
     public ImageOverlayView(Context context) {
         super(context);
