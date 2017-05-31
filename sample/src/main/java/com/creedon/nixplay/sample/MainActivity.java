@@ -2,8 +2,8 @@ package com.creedon.nixplay.sample;
 
 import android.os.Bundle;
 
-import com.creedon.nixplay.androidphotobrowser.PhotoBrowserActivity;
-import com.creedon.nixplay.androidphotobrowser.PhotoBrowserBasicActivity;
+import com.creedon.androidphotobrowser.PhotoBrowserActivity;
+import com.creedon.androidphotobrowser.PhotoBrowserBasicActivity;
 import com.creedon.nixplay.sample.common.data.Demo;
 
 import org.json.JSONArray;

@@ -1,4 +1,4 @@
-package com.creedon.nixplay.androidphotobrowser.common.views;
+package com.creedon.androidphotobrowser.common.views;
 
 import android.content.Context;
 import android.content.Intent;

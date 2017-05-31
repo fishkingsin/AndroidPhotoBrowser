@@ -1,4 +1,4 @@
-package com.creedon.nixplay.androidphotobrowser;
+package com.creedon.androidphotobrowser;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 
-import com.creedon.nixplay.androidphotobrowser.common.data.models.CustomImage;
-import com.creedon.nixplay.androidphotobrowser.common.views.ImageOverlayView;
+import com.creedon.androidphotobrowser.common.data.models.CustomImage;
+import com.creedon.androidphotobrowser.common.views.ImageOverlayView;
 import com.stfalcon.frescoimageviewer.ImageViewer;
 
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setTitle(listener.getActionBarTitle());
             actionBar.setSubtitle(listener.getSubtitle());
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_white_24dp);
+            getSupportActionBar().setHomeAsUpIndicator(com.creedon.nixplay.androidphotobrowser.R.drawable.ic_up_white_24dp);
         }
 
         selections = new boolean[posters.size()];
@@ -116,10 +116,10 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     public boolean onCreatePanelMenu(int featureId, Menu menu) {
         MenuInflater inflater = getMenuInflater();
         if (!selectionMode) {
-            inflater.inflate(R.menu.options_menu, menu);
+            inflater.inflate(com.creedon.nixplay.androidphotobrowser.R.menu.options_menu, menu);
             setupToolBar();
         } else {
-            inflater.inflate(R.menu.menu, menu);
+            inflater.inflate(com.creedon.nixplay.androidphotobrowser.R.menu.menu, menu);
             setupToolBar();
         }
         return true;
@@ -151,9 +151,9 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (selectionMode) {
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+            getSupportActionBar().setHomeAsUpIndicator(com.creedon.nixplay.androidphotobrowser.R.drawable.ic_close_white_24dp);
         } else {
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_white_24dp);
+            getSupportActionBar().setHomeAsUpIndicator(com.creedon.nixplay.androidphotobrowser.R.drawable.ic_up_white_24dp);
         }
     }
 
@@ -175,17 +175,17 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         int i = item.getItemId();
-        if (i == R.id.selectPhoto) {
+        if (i == com.creedon.nixplay.androidphotobrowser.R.id.selectPhoto) {
             setupSelectionMode(!selectionMode);
 
-        } else if (i == R.id.addPhotos) {
-        } else if (i == R.id.addAlbumToPlaylist) {
-        } else if (i == R.id.editAlbumName) {
-        } else if (i == R.id.deleteAlbum) {
-        } else if (i == R.id.delete) {
+        } else if (i == com.creedon.nixplay.androidphotobrowser.R.id.addPhotos) {
+        } else if (i == com.creedon.nixplay.androidphotobrowser.R.id.addAlbumToPlaylist) {
+        } else if (i == com.creedon.nixplay.androidphotobrowser.R.id.editAlbumName) {
+        } else if (i == com.creedon.nixplay.androidphotobrowser.R.id.deleteAlbum) {
+        } else if (i == com.creedon.nixplay.androidphotobrowser.R.id.delete) {
             //TODO delete item
-        } else if (i == R.id.send) {
-        } else if (i == R.id.download) {
+        } else if (i == com.creedon.nixplay.androidphotobrowser.R.id.send) {
+        } else if (i == com.creedon.nixplay.androidphotobrowser.R.id.download) {
         } else if (i == android.R.id.home) {
             if (!selectionMode) {
                 finish();
@@ -204,7 +204,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
             selections[position] = !selections[position];
             SquareCardView squareCardView = (SquareCardView) view;
             if (squareCardView != null) {
-                CheckBox checkBox = (CheckBox) squareCardView.findViewById(R.id.checkBox);
+                CheckBox checkBox = (CheckBox) squareCardView.findViewById(com.creedon.nixplay.androidphotobrowser.R.id.checkBox);
                 if (selectionMode) {
                     checkBox.setChecked(selections[position]);
                 }
@@ -223,7 +223,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         selections[position] = !selections[position];
         SquareCardView squareCardView = (SquareCardView) view;
         if (squareCardView != null) {
-            CheckBox checkBox = (CheckBox) squareCardView.findViewById(R.id.checkBox);
+            CheckBox checkBox = (CheckBox) squareCardView.findViewById(com.creedon.nixplay.androidphotobrowser.R.id.checkBox);
             if (selectionMode) {
                 checkBox.setChecked(selections[position]);
             }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.creedon.nixplay.androidphotobrowser.SquareCardView
+<com.creedon.androidphotobrowser.SquareCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
@@ -26,4 +26,4 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
-</com.creedon.nixplay.androidphotobrowser.SquareCardView>
+</com.creedon.androidphotobrowser.SquareCardView>

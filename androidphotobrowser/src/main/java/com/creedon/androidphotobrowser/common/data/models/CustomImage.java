@@ -1,4 +1,4 @@
-package com.creedon.nixplay.androidphotobrowser.common.data.models;
+package com.creedon.androidphotobrowser.common.data.models;
 
 /*
  * Created by troy379 on 10.03.17.

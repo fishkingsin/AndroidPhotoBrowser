@@ -1,4 +1,4 @@
-package com.creedon.nixplay.androidphotobrowser;
+package com.creedon.androidphotobrowser;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -36,7 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     @Override
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(com.creedon.nixplay.androidphotobrowser.R.layout.card_view, null);
         RecyclerViewHolders rcv = new RecyclerViewHolders(layoutView);
 
         return rcv;

@@ -2,6 +2,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'git-repo'
+def publishVersionName='0.0.2'
 buildscript {
     repositories {
         jcenter()
@@ -18,7 +19,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "0.0.1"
+        versionName "$publishVersionName"
     }
     buildTypes {
         release {
@@ -35,12 +36,16 @@ android {
 
 repositories {
     github("fishkingsin", "FrescoImageViewer", "master", "releases")
+    maven {
+        url  "http://dl.bintray.com/fishkingsin/maven"
+    }
 }
 
 publish {
+    userOrg = 'fishkingsin'
     groupId = 'com.github.fishkingsin'
     artifactId = 'androidphotobrowser'
-    publishVersion = '0.0.1'
+    publishVersion = "$publishVersionName"
     desc = 'Android Photo browser base on FrescoImageViewer(https://github.com/stfalcon-studio/FrescoImageViewer)'
     licences = ['Apache-2.0']
     uploadName = 'AndroidPhotoBrowser'

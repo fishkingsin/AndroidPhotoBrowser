@@ -1,4 +1,4 @@
-package com.creedon.nixplay.androidphotobrowser;
+package com.creedon.androidphotobrowser;
 
 import android.content.Context;
 import android.util.AttributeSet;
