@@ -9,19 +9,31 @@ import android.widget.TextView;
 
 import com.creedon.androidphotobrowser.R;
 
+import org.json.JSONObject;
+
 
 /*
  * Created by Alexander Krol (troy379) on 29.08.16.
  */
 public class ImageOverlayView extends RelativeLayout {
+    private JSONObject data;
 
+    public interface ImageOverlayVieListener{
+
+        void onDownloadButtonPressed(JSONObject data);
+
+        void onTrashButtonPressed(JSONObject data);
+    }
     private TextView tvDescription;
 
     private String sharingText;
-
+    ImageOverlayVieListener listener = null;
     public ImageOverlayView(Context context) {
         super(context);
         init();
+        if(context instanceof ImageOverlayVieListener){
+            listener = (ImageOverlayVieListener) context;
+        }
     }
 
     public ImageOverlayView(Context context, AttributeSet attrs) {
@@ -36,6 +48,10 @@ public class ImageOverlayView extends RelativeLayout {
 
     public void setDescription(String description) {
         tvDescription.setText(description);
+    }
+
+    public void setData(JSONObject jsonObject) {
+        this.data = jsonObject;
     }
 
     public void setShareText(String text) {
@@ -56,19 +72,23 @@ public class ImageOverlayView extends RelativeLayout {
         view.findViewById(R.id.btnTrash).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(listener != null){
+                    listener.onTrashButtonPressed(data);
+                }
             }
         });
         view.findViewById(R.id.btnEdit).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO edit caption , pop confirmation , fire data
             }
         });
         view.findViewById(R.id.btnDownload).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(listener != null){
+                    listener.onDownloadButtonPressed(data);
+                }
             }
         });
     }
