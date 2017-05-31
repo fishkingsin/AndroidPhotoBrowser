@@ -41,7 +41,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.creedon.nixplay.androidphotobrowser.R.layout.activity_demo);
+        setContentView(R.layout.activity_demo);
 
 
     }
@@ -56,7 +56,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
 
         lLayout = new GridLayoutManager(PhotoBrowserBasicActivity.this, 3);
 
-        recyclerView = (RecyclerView) findViewById(com.creedon.nixplay.androidphotobrowser.R.id.recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(lLayout);

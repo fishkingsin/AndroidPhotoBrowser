@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.creedon.nixplay.androidphotobrowser.R;
+import com.creedon.androidphotobrowser.R;
 
 
 /*
