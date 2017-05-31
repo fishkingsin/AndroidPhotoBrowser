@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.creedon.androidphotobrowser.PhotoBrowserActivity;
 import com.creedon.androidphotobrowser.PhotoBrowserBasicActivity;
+import com.creedon.androidphotobrowser.common.data.models.CustomImage;
 import com.creedon.nixplay.sample.common.data.Demo;
 
 import org.json.JSONArray;
@@ -76,5 +77,10 @@ public class MainActivity extends PhotoBrowserActivity implements PhotoBrowserBa
     @Override
     public String getSubtitle() {
         return "Subtitle";
+    }
+
+    @Override
+    public List<CustomImage> getCustomImages(PhotoBrowserActivity photoBrowserActivity) {
+        return null;
     }
 }

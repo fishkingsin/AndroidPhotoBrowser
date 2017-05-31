@@ -6,6 +6,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.creedon.androidphotobrowser.common.data.models.CustomImage;
+
 import java.util.List;
 
 /*
@@ -26,6 +28,8 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
         String getActionBarTitle();
 
         String getSubtitle();
+
+        List<CustomImage> getCustomImages(PhotoBrowserActivity photoBrowserActivity);
     }
     public PhotoBrowserListener listener;
     private static final String TAG = PhotoBrowserBasicActivity.class.getSimpleName();

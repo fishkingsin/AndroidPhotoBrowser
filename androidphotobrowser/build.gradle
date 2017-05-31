@@ -1,8 +1,8 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'git-repo'
-def publishVersionName='0.0.2'
+
+def publishVersionName='0.0.3'
 buildscript {
     repositories {
         jcenter()
@@ -34,12 +34,6 @@ android {
     }
 }
 
-repositories {
-    github("fishkingsin", "FrescoImageViewer", "master", "releases")
-    maven {
-        url  "http://dl.bintray.com/fishkingsin/maven"
-    }
-}
 
 publish {
     userOrg = 'fishkingsin'

@@ -28,7 +28,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     private int currentPosition;
     private boolean isDialogShown;
     protected boolean[] selections;
-    private boolean selectionMode;
+    protected boolean selectionMode;
     private android.support.v7.app.ActionBar actionBar;
 
     @Override
@@ -147,7 +147,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         }
     }
 
-    private void setupToolBar() {
+    protected void setupToolBar() {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (selectionMode) {
@@ -157,7 +157,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         }
     }
 
-    private void setupSelectionMode(boolean b) {
+    protected void setupSelectionMode(boolean b) {
         selectionMode = b;
         if (!selectionMode) {
             for (int i = 0; i < selections.length; i++) {
@@ -242,29 +242,36 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     }
 
     private List<CustomImage> getCustomImages() {
-        String[] posters;
-        String[] descriptions;
+        if(listener==null)
+        {
 
-        try {
+        }else {
+            String[] posters;
 
-            ArrayList<String> previewUrls = (ArrayList<String>) listener.photoBrowserPhotos(this);
-            ArrayList<String> thumbnailUrls = (ArrayList<String>) listener.photoBrowserThumbnails(this);
-
-
-            posters = previewUrls.toArray(new String[0]);
-            descriptions = previewUrls.toArray(new String[0]);
-            List<CustomImage> images = new ArrayList<>();
             try {
-                for (int i = 0; i < posters.length; i++) {
-                    images.add(new CustomImage(posters[i], descriptions[i]));
+                List<CustomImage> images = listener.getCustomImages(this);
+                if(images == null) {
+                    ArrayList<String> previewUrls = (ArrayList<String>) listener.photoBrowserPhotos(this);
+
+                    ArrayList<String> captions = (ArrayList<String>) listener.photoBrowserPhotoCaptions(this);
+
+
+                    posters = previewUrls.toArray(new String[0]);
+
+
+                    try {
+                        for (int i = 0; i < posters.length; i++) {
+                            images.add(new CustomImage(posters[i], captions.get(i)));
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
+                return images;
             } catch (Exception e) {
                 e.printStackTrace();
-            }
-            return images;
-        } catch (Exception e) {
-            e.printStackTrace();
 
+            }
         }
         return null;
 
