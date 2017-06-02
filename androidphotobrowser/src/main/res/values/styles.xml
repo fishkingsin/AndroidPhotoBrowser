@@ -42,10 +42,10 @@
     </style>
 
     <style name="DescriptionText" parent="AppTheme">
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorDescription</item>
         <item name="android:maxLines">5</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="AppTheme.ActionBar.TitleTextStyle" parent="@android:style/Widget.TextView">

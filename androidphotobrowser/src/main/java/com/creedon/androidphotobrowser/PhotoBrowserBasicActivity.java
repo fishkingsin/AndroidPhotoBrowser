@@ -22,13 +22,9 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
         List<String> photoBrowserPhotos(PhotoBrowserBasicActivity activity );
         List<String> photoBrowserThumbnails(PhotoBrowserBasicActivity activity );
         String photoBrowserPhotoAtIndex(PhotoBrowserBasicActivity activity , int index);
-
         List<String> photoBrowserPhotoCaptions(PhotoBrowserBasicActivity photoBrowserBasicActivity);
-
         String getActionBarTitle();
-
         String getSubtitle();
-
         List<CustomImage> getCustomImages(PhotoBrowserActivity photoBrowserActivity);
     }
     public PhotoBrowserListener listener;

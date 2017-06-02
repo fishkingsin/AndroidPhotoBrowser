@@ -35,6 +35,7 @@
     <string name="ADD_ALBUM_TO_PLAYLIST">Add album to playlist</string>
     <string name="EDIT_ALBUM_NAME">Edit album name</string>
     <string name="DELETE_ALBUM">Delete album</string>
+    <string name="add_a_caption">Add a caption...</string>
 
     <string-array name="options">
         <item>hide status bar</item>

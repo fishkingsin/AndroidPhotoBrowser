@@ -24,6 +24,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     private static final String KEY_CURRENT_POSITION = "CURRENT_POSITION";
 
     private List<CustomImage> images;
+    protected ImageViewer imageViewer;
 
     public ImageOverlayView getOverlayView() {
         return overlayView;
@@ -102,7 +103,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         isDialogShown = true;
         currentPosition = startPosition;
         overlayView = new ImageOverlayView(this);
-        new ImageViewer.Builder<>(this, posters)
+        imageViewer = new ImageViewer.Builder<>(this, posters)
                 .setOverlayView(overlayView)
                 .setStartPosition(startPosition)
                 .setImageChangeListener(getImageChangeListener())
