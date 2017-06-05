@@ -33,7 +33,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     protected ImageOverlayView overlayView;
     private int currentPosition;
     private boolean isDialogShown;
-    protected boolean[] selections;
+    protected String[] selections;
     protected boolean selectionMode;
     private android.support.v7.app.ActionBar actionBar;
 
@@ -50,9 +50,9 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_white_24dp);
         }
 
-        selections = new boolean[posters.size()];
+        selections = new String[posters.size()];
         for (int i = 0; i < selections.length; i++) {
-            selections[i] = false;
+            selections[i] = "0";
         }
     }
 
@@ -167,7 +167,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         selectionMode = b;
         if (!selectionMode) {
             for (int i = 0; i < selections.length; i++) {
-                selections[i] = false;
+                selections[i] = "0";
             }
         } else {
             //TODO show bottom menu
@@ -207,12 +207,12 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     @Override
     public void onItemClick(View view, int position) {
         if (selectionMode) {
-            selections[position] = !selections[position];
+            selections[position] = selections[position].equals("1") ? "0" : "1";
             SquareCardView squareCardView = (SquareCardView) view;
             if (squareCardView != null) {
                 CheckBox checkBox = (CheckBox) squareCardView.findViewById(R.id.checkBox);
                 if (selectionMode) {
-                    checkBox.setChecked(selections[position]);
+                    checkBox.setChecked(selections[position].equals("1"));
                 }
 
             }
@@ -226,12 +226,12 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     public void onItemLongClick(View view, int position) {
         // ...
         selectionMode = true;
-        selections[position] = !selections[position];
+        selections[position] = selections[position].equals("1") ? "0" : "1";
         SquareCardView squareCardView = (SquareCardView) view;
         if (squareCardView != null) {
             CheckBox checkBox = (CheckBox) squareCardView.findViewById(R.id.checkBox);
             if (selectionMode) {
-                checkBox.setChecked(selections[position]);
+                checkBox.setChecked(selections[position].equals("1"));
             }
 
         }
@@ -239,7 +239,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
 
     @Override
     public boolean isPhotoSelected(int position) {
-        return selections[position];
+        return selections[position].equals("1");
     }
 
     @Override

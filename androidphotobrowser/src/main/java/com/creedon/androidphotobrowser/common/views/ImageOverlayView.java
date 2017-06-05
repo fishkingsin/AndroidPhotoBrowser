@@ -98,8 +98,6 @@ public class ImageOverlayView extends RelativeLayout {
                 return false;
             }
         });
-
-
         view.findViewById(R.id.btnTrash).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
