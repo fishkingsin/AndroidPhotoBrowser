@@ -33,7 +33,9 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
     GridLayoutManager lLayout;
 
 
-
+    public RecyclerViewAdapter getRcAdapter() {
+        return rcAdapter;
+    }
 
     protected RecyclerViewAdapter rcAdapter;
 

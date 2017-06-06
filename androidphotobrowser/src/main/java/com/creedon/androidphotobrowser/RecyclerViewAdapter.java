@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
@@ -32,7 +33,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             Log.e(TAG, "RecyclerViewAdapterListener not found");
         }
     }
+    //https://stackoverflow.com/questions/30053610/best-way-to-update-data-with-a-recyclerview-adapter
+    public void swap(ArrayList<String> datas){
 
+        if (itemList != null) {
+            itemList.clear();
+            itemList.addAll(datas);
+        }
+        else {
+            itemList = datas;
+        }
+        notifyDataSetChanged();
+    }
     @Override
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 

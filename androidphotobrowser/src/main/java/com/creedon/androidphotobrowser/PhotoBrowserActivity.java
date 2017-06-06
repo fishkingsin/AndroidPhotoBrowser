@@ -1,6 +1,5 @@
 package com.creedon.androidphotobrowser;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,6 +35,11 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     }
 
     protected ImageOverlayView overlayView;
+
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+
     private int currentPosition;
     private boolean isDialogShown;
     protected String[] selections;
