@@ -14,6 +14,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         super(itemView);
         itemView.setOnClickListener(this);
         simpleDraweeView = (SimpleDraweeView) itemView.findViewById(R.id.image);
+
         checkBox = (CheckBox) itemView.findViewById(R.id.checkBox);
         checkBox.setVisibility(View.INVISIBLE);
         checkBox.setClickable(false);

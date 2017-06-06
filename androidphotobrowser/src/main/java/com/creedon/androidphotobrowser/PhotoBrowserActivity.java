@@ -1,5 +1,6 @@
 package com.creedon.androidphotobrowser;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +24,10 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     private static final String KEY_IS_DIALOG_SHOWN = "IS_DIALOG_SHOWN";
     private static final String KEY_CURRENT_POSITION = "CURRENT_POSITION";
 
+    public List<CustomImage> getImages() {
+        return images;
+    }
+
     private List<CustomImage> images;
     protected ImageViewer imageViewer;
 
@@ -36,6 +41,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     protected String[] selections;
     protected boolean selectionMode;
     private android.support.v7.app.ActionBar actionBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +71,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         };
     }
 
-    private ImageViewer.OnImageChangeListener getImageChangeListener() {
+    protected ImageViewer.OnImageChangeListener getImageChangeListener() {
         return new ImageViewer.OnImageChangeListener() {
             @Override
             public void onImageChange(int position) {

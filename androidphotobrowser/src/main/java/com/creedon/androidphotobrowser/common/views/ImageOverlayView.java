@@ -34,6 +34,8 @@ public class ImageOverlayView extends RelativeLayout {
 
         void onTrashButtonPressed(JSONObject data);
         void onCaptionchnaged(JSONObject data, String caption);
+
+        void onCloseButtonClicked();
     }
 //    private TextView tvDescription;
 
@@ -91,11 +93,8 @@ public class ImageOverlayView extends RelativeLayout {
 
     private void init() {
         View view = inflate(getContext(), R.layout.view_image_overlay, this);
-//        tvDescription = (TextView) view.findViewById(R.id.tvDescription);
         etDescription = (MaterialEditText) view.findViewById(R.id.etDescription);
-
         etDescription.setVisibility(VISIBLE);
-//        tvDescription.setVisibility(INVISIBLE);
         etDescription.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -172,6 +171,7 @@ public class ImageOverlayView extends RelativeLayout {
             public void onClick(View v) {
                 if(listener != null){
                     //TODO dismiss image view
+                    listener.onCloseButtonClicked();
                 }
             }
         });
