@@ -17,6 +17,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.json.JSONObject;
 
+import java.util.List;
+
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 
@@ -26,7 +28,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 public class ImageOverlayView extends RelativeLayout {
     private static final String TAG = ImageOverlayView.class.getSimpleName();
     private JSONObject data;
-    private MaterialEditText etDescription;
+    protected MaterialEditText etDescription;
 
     public interface ImageOverlayVieListener{
 
@@ -45,7 +47,7 @@ public class ImageOverlayView extends RelativeLayout {
         this.listener = listener;
     }
 
-    ImageOverlayVieListener listener = null;
+    protected ImageOverlayVieListener listener = null;
     public ImageOverlayView(Context context) {
         super(context);
         init();
@@ -91,7 +93,7 @@ public class ImageOverlayView extends RelativeLayout {
         getContext().startActivity(sendIntent);
     }
 
-    private void init() {
+    protected View init() {
         View view = inflate(getContext(), R.layout.view_image_overlay, this);
         etDescription = (MaterialEditText) view.findViewById(R.id.etDescription);
         etDescription.setVisibility(VISIBLE);
@@ -143,6 +145,7 @@ public class ImageOverlayView extends RelativeLayout {
                 }
             }
         });
+        view.findViewById(R.id.btnEdit).setVisibility(GONE);
 //        view.findViewById(R.id.btnEdit).setOnClickListener(new OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -175,6 +178,7 @@ public class ImageOverlayView extends RelativeLayout {
                 }
             }
         });
+        return view;
     }
     private void hideKeyboard(View view) {
         InputMethodManager manager = (InputMethodManager) view.getContext()
