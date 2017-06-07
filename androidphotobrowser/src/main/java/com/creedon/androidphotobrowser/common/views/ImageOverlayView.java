@@ -17,8 +17,6 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.json.JSONObject;
 
-import java.util.List;
-
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 
@@ -50,26 +48,29 @@ public class ImageOverlayView extends RelativeLayout {
     protected ImageOverlayVieListener listener = null;
     public ImageOverlayView(Context context) {
         super(context);
-        init();
         if(context instanceof ImageOverlayVieListener){
             listener = (ImageOverlayVieListener) context;
         }
+        init();
+
     }
 
     public ImageOverlayView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
         if(context instanceof ImageOverlayVieListener){
             listener = (ImageOverlayVieListener) context;
         }
+        init();
+
     }
 
     public ImageOverlayView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
         if(context instanceof ImageOverlayVieListener){
             listener = (ImageOverlayVieListener) context;
         }
+        init();
+
     }
 
     public void setDescription(String description) {
