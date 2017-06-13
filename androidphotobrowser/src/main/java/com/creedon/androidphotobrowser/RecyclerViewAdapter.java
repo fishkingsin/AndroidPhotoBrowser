@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
@@ -34,7 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         }
     }
     //https://stackoverflow.com/questions/30053610/best-way-to-update-data-with-a-recyclerview-adapter
-    public void swap(ArrayList<String> datas){
+    public void swap(List<String> datas){
 
         if (itemList != null) {
             itemList.clear();

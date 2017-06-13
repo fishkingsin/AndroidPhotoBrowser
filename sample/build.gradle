@@ -35,7 +35,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile 'com.github.stfalcon:frescoimageviewer:0.5.0'
     compile "com.facebook.fresco:fresco:1.2.0"
 
     compile 'com.github.mmin18:realtimeblurview:1.1.0'

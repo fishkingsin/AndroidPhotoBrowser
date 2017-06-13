@@ -43,7 +43,7 @@
                 android:src="@drawable/bin"/>
 
             <ImageButton
-                android:id="@+id/btnEdit"
+                android:id="@+id/btnSend"
                 style="@style/SimpleButtonStyle"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -51,7 +51,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/edit"/>
+                android:src="@drawable/send"/>
 
             <ImageButton
                 android:id="@+id/btnDownload"
@@ -73,30 +73,35 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorDescriptionBackground">
 
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
             android:id="@+id/etDescription"
             style="@style/DescriptionText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
 
             android:hint="@string/add_a_caption"
+            android:imeOptions="actionDone"
             android:padding="@dimen/activity_margin"
+            android:visibility="gone"
             app:met_baseColor="@android:color/white"
+            app:met_clearButton="true"
             app:met_floatingLabel="highlight"
-
             app:met_maxCharacters="160"
             app:met_primaryColor="@color/colorDescriptionHints"
+            app:met_singleLineEllipsis="true"
             />
 
-        <!--<TextView-->
-            <!--android:id="@+id/tvDescription"-->
-            <!--android:textColor="@color/colorDescription"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:padding="@dimen/activity_margin"-->
-            <!--android:maxLines="4"-->
-            <!--/>-->
+        <TextView
+            android:id="@+id/tvDescription"
+            android:textColor="@color/colorDescription"
+            android:hint="@string/add_a_caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="@dimen/activity_margin"
+            android:textColorHint="#F6F6F6"
+            android:maxLines="4"
+            />
     </FrameLayout>
 
 

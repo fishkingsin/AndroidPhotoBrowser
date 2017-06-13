@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 
 import com.creedon.androidphotobrowser.common.data.models.CustomImage;
 import com.creedon.androidphotobrowser.common.views.ImageOverlayView;
+
 import com.stfalcon.frescoimageviewer.ImageViewer;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
 
     private int currentPosition;
     private boolean isDialogShown;
-    protected String[] selections;
+    protected ArrayList<String> selections;
     protected boolean selectionMode;
     private android.support.v7.app.ActionBar actionBar;
 
@@ -60,9 +61,9 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_white_24dp);
         }
 
-        selections = new String[posters.size()];
-        for (int i = 0; i < selections.length; i++) {
-            selections[i] = "0";
+        selections = new ArrayList<String>();
+        for (int i = 0; i < images.size(); i++) {
+            selections.add("0");
         }
     }
 
@@ -176,8 +177,8 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     protected void setupSelectionMode(boolean b) {
         selectionMode = b;
         if (!selectionMode) {
-            for (int i = 0; i < selections.length; i++) {
-                selections[i] = "0";
+            for (int i = 0; i < selections.size(); i++) {
+                selections.set(i, "0");
             }
         } else {
             //TODO show bottom menu
@@ -217,12 +218,12 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     @Override
     public void onItemClick(View view, int position) {
         if (selectionMode) {
-            selections[position] = selections[position].equals("1") ? "0" : "1";
+            selections.set(position, selections.get(position).equals("1") ? "0" : "1");
             SquareCardView squareCardView = (SquareCardView) view;
             if (squareCardView != null) {
                 CheckBox checkBox = (CheckBox) squareCardView.findViewById(R.id.checkBox);
                 if (selectionMode) {
-                    checkBox.setChecked(selections[position].equals("1"));
+                    checkBox.setChecked(selections.get(position).equals("1"));
                 }
 
             }
@@ -235,13 +236,15 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     @Override
     public void onItemLongClick(View view, int position) {
         // ...
-        selectionMode = true;
-        selections[position] = selections[position].equals("1") ? "0" : "1";
+        if(!selectionMode) {
+            setupSelectionMode(true);
+        }
+        selections.set(position, selections.get(position).equals("1") ? "0" : "1");
         SquareCardView squareCardView = (SquareCardView) view;
         if (squareCardView != null) {
             CheckBox checkBox = (CheckBox) squareCardView.findViewById(R.id.checkBox);
             if (selectionMode) {
-                checkBox.setChecked(selections[position].equals("1"));
+                checkBox.setChecked(selections.get(position).equals("1"));
             }
 
         }
@@ -249,7 +252,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
 
     @Override
     public boolean isPhotoSelected(int position) {
-        return selections[position].equals("1");
+        return selections.get(position).equals("1");
     }
 
     @Override
@@ -291,5 +294,9 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         }
         return null;
 
+    }
+
+    public void refreshCustomImage() {
+        images = getCustomImages();
     }
 }
