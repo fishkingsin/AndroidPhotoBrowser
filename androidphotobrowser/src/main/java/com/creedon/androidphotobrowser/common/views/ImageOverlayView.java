@@ -55,7 +55,7 @@ public class ImageOverlayView extends RelativeLayout {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            Log.d(TAG, "CharSequence " + s + " start " + start + " before " + before + " count " + count);
+//            Log.d(TAG, "CharSequence " + s + " start " + start + " before " + before + " count " + count);
         }
 
         @Override
@@ -260,9 +260,9 @@ public class ImageOverlayView extends RelativeLayout {
             listener.didEndEditing(data, etDescription.getText().toString());
         }
 //        if(!etDescription.getText().toString().equals("")) {
-//            tvDescription.setText(etDescription.getText().toString());
+        tvDescription.setText(etDescription.getText().toString());
 //        }
-//        originalDescription = etDescription.getText().toString();
+        originalDescription = etDescription.getText().toString();
         etDescription.removeTextChangedListener(textWatcher);
         //TODO fire caption chaged lister
         tvDescription.setVisibility(VISIBLE);

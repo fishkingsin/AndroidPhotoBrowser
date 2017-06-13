@@ -40,12 +40,14 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     public int getCurrentPosition() {
         return currentPosition;
     }
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
+    }
 
     private int currentPosition;
     private boolean isDialogShown;
     protected ArrayList<String> selections;
     protected boolean selectionMode;
-    private android.support.v7.app.ActionBar actionBar;
 
 
     @Override
@@ -53,7 +55,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         super.onCreate(savedInstanceState);
         init();
         images = getCustomImages();
-        actionBar = getSupportActionBar();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setTitle(listener.getActionBarTitle());
@@ -61,7 +63,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_up_white_24dp);
         }
 
-        selections = new ArrayList<String>();
+        selections = new ArrayList<>();
         for (int i = 0; i < images.size(); i++) {
             selections.add("0");
         }

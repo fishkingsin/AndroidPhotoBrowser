@@ -23,10 +23,9 @@
             fresco:placeholderImageScaleType="fitCenter"
             fresco:failureImage="@drawable/missing"
             fresco:failureImageScaleType="fitCenter"
-            fresco:progressBarImage="@drawable/progress_bar"
+            fresco:progressBarImage="@drawable/loading"
             fresco:progressBarImageScaleType="centerInside"
             fresco:progressBarAutoRotateInterval="1000"
-            fresco:backgroundImage="@color/blue"
 
             />
 

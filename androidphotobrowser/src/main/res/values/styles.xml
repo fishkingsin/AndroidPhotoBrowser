@@ -1,12 +1,138 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light">
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/accentText</item>
         <item name="android:textColor">#000</item>
         <item name="android:textSize">16sp</item>
+        <!--
+            All dialogs will default to Theme.DARK with this set to true.
+        -->
+        <item name="md_dark_theme">false</item>
+
+        <!--
+            This overrides the default dark or light dialog background color.
+            Note that if you use a dark color here, you should set md_dark_theme to
+            true so text and selectors look visible
+        -->
+        <item name="md_background_color">#FFFFFF</item>
+
+        <!--
+            By default, the title text color is derived from the
+            ?android:textColorPrimary system attribute.
+        -->
+        <item name="md_title_color">#4A4A4A</item>
+
+
+        <!--
+            By default, the content text color is derived from the
+            ?android:textColorSecondary system attribute.
+        -->
+        <item name="md_content_color">#777777</item>
+
+        <!--
+            By default, the link color is derived from the colorAccent attribute
+            of AppCompat or android:colorAccent attribute of the Material theme.
+        -->
+        <item name="md_link_color">#FF0000FF</item>
+
+        <!--
+            By default, the positive action text color is derived
+            from the colorAccent attribute of AppCompat or android:colorAccent
+            attribute of the Material theme.
+        -->
+        <item name="md_positive_color">#60b2e8</item>
+
+        <!--
+            By default, the neutral action text color is derived
+            from the colorAccent attribute of AppCompat or android:colorAccent
+            attribute of the Material theme.
+        -->
+        <item name="md_neutral_color">#FF60B2E8</item>
+
+        <!--
+            By default, the negative action text color is derived
+            from the colorAccent attribute of AppCompat or android:colorAccent
+            attribute of the Material theme.
+        -->
+        <item name="md_negative_color">#777777</item>
+
+        <!--
+            By default, a progress dialog's progress bar, check boxes, and radio buttons
+            have a color that is derived from the colorAccent attribute of AppCompat or
+            android:colorAccent attribute of the Material theme.
+        -->
+        <item name="md_widget_color">#60b2e8</item>
+
+        <!--
+            By default, the list item text color is black for the light
+            theme and white for the dark theme.
+        -->
+        <item name="md_item_color">#60b2e8</item>
+
+        <!--
+            This overrides the color used for the top and bottom dividers used when
+            content is scrollable
+        -->
+        <item name="md_divider_color">#F4F4F4</item>
+
+        <!--
+            This overrides the color used for the ripple displayed on action buttons (Lollipop and above).
+            Defaults to the colorControlHighlight attribute from AppCompat OR the Material theme.
+        -->
+        <item name="md_btn_ripple_color">#60b2e8</item>
+
+        <!--
+            This overrides the selector used on list items.
+        -->
+
+        <!--
+            This sets the gravity used while displaying the dialog title, defaults to start.
+            Can be start, center, or end.
+        -->
+        <item name="md_title_gravity">start</item>
+
+        <!--
+            This sets the gravity used while displaying the dialog content, defaults to start.
+            Can be start, center, or end.
+        -->
+        <item name="md_content_gravity">start</item>
+
+        <!--
+            This sets the gravity used while displaying the list items (not including custom adapters), defaults to start.
+            Can be start, center, or end.
+        -->
+        <item name="md_items_gravity">start</item>
+
+        <!--
+            This sets the gravity used while displaying the dialog action buttons, defaults to start.
+
+            START (Default)    Neutral     Negative    Positive
+            CENTER:            Negative    Neutral     Positive
+            END:	           Positive    Negative    Neutral
+        -->
+        <item name="md_buttons_gravity">start</item>
+
+        <!--
+            This sets the gravity used while displaying the stacked action buttons, defaults to end.
+            Can be start, center, or end.
+        -->
+        <item name="md_btnstacked_gravity">center</item>
+
+        <!--
+            The name of font in assets/fonts used on titles and action buttons
+            (null uses device default). E.g. [your-project]/app/main/assets/fonts/[medium]
+        -->
+        <item name="md_medium_font">Roboto-Medium.ttf</item>
+
+        <!--
+            The name of font in assets/fonts used everywhere else, like content and list items
+            (null uses device default). E.g. [your-project]/app/main/assets/fonts/[regular]
+        -->
+        <item name="md_regular_font">Roboto-Regular.ttf</item>
     </style>
 
     <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">

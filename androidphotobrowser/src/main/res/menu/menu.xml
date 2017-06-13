@@ -15,7 +15,7 @@
           app:showAsAction="always">
     </item>
     <item android:id="@+id/download"
-          android:icon="@drawable/download_cloud"
+          android:icon="@drawable/download_cloud_blue"
           android:title="@string/download"
           android:tint="@color/colorAccent"
           app:showAsAction="ifRoom">
