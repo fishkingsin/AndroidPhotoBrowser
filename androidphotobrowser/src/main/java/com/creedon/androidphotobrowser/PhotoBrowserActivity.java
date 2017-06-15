@@ -1,5 +1,6 @@
 package com.creedon.androidphotobrowser;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,11 +10,15 @@ import android.widget.CheckBox;
 
 import com.creedon.androidphotobrowser.common.data.models.CustomImage;
 import com.creedon.androidphotobrowser.common.views.ImageOverlayView;
-
+import com.facebook.drawee.backends.pipeline.*;
+import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.stfalcon.frescoimageviewer.ImageViewer;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
 
 /*
  * Created by troy379 on 06.03.17.
@@ -40,6 +45,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     public int getCurrentPosition() {
         return currentPosition;
     }
+
     public void setCurrentPosition(int currentPosition) {
         this.currentPosition = currentPosition;
     }
@@ -52,7 +58,22 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(BuildConfig.DEBUG){
+            Fresco.getImagePipeline().clearDiskCaches();
+            Fresco.getImagePipeline().clearMemoryCaches();
+        }
         super.onCreate(savedInstanceState);
+        if(!Fresco.hasBeenInitialized()) {
+            Context context = this;
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+            ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
+                    .newBuilder(context, okHttpClient)
+                    .build();
+            Fresco.initialize(context, config);
+//            Fresco.initialize(this);
+        }
         init();
         images = getCustomImages();
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
@@ -238,7 +259,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     @Override
     public void onItemLongClick(View view, int position) {
         // ...
-        if(!selectionMode) {
+        if (!selectionMode) {
             setupSelectionMode(true);
         }
         selections.set(position, selections.get(position).equals("1") ? "0" : "1");
@@ -263,15 +284,14 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     }
 
     private List<CustomImage> getCustomImages() {
-        if(listener==null)
-        {
+        if (listener == null) {
 
-        }else {
+        } else {
             String[] posters;
 
             try {
                 List<CustomImage> images = listener.getCustomImages(this);
-                if(images == null) {
+                if (images == null) {
                     ArrayList<String> previewUrls = (ArrayList<String>) listener.photoBrowserPhotos(this);
 
                     ArrayList<String> captions = (ArrayList<String>) listener.photoBrowserPhotoCaptions(this);

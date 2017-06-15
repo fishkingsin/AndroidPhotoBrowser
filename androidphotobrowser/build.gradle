@@ -1,15 +1,15 @@
 
-apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: "com.android.library"
+apply plugin: "com.novoda.bintray-release"
 
-def publishVersionName='0.0.7'
+def publishVersionName="0.0.7"
 buildscript {
     repositories {
         jcenter()
 
     }
     dependencies {
-        classpath 'com.novoda:bintray-release:0.5.0'
+        classpath "com.novoda:bintray-release:0.5.0"
     }
 }
 android {
@@ -17,7 +17,7 @@ android {
         jumboMode true
     }
     compileSdkVersion 25
-    buildToolsVersion '25.0.3'
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         minSdkVersion 15
@@ -28,7 +28,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
     android {
@@ -44,37 +44,42 @@ android {
 
 
 publish {
-    userOrg = 'fishkingsin'
-    groupId = 'com.github.fishkingsin'
-    artifactId = 'androidphotobrowser'
+    userOrg = "fishkingsin"
+    groupId = "com.github.fishkingsin"
+    artifactId = "androidphotobrowser"
     publishVersion = "$publishVersionName"
-    desc = 'Android Photo browser base on FrescoImageViewer(https://github.com/stfalcon-studio/FrescoImageViewer)'
-    licences = ['Apache-2.0']
-    uploadName = 'AndroidPhotoBrowser'
-    website = 'https://github.com/fishkingsin/AndroidPhotoBrowser.git'
+    desc = "Android Photo browser base on FrescoImageViewer(https://github.com/stfalcon-studio/FrescoImageViewer)"
+    licences = ["Apache-2.0"]
+    uploadName = "AndroidPhotoBrowser"
+    website = "https://github.com/fishkingsin/AndroidPhotoBrowser.git"
 }
 
 ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'androidphotobrowser'
+    bintrayRepo = "maven"
+    bintrayName = "androidphotobrowser"
+    FRESCO_VERSION="1.3.0"
+    SUPPORT_LIB_VERSION="25.1.1"
 }
 dependencies {
-    compile ('com.github.fishkingsin:frescoimageviewer:0.5.0-dev1'){
-        exclude group: 'com.android.support'
-        exclude module: 'commons-io'
+    compile ("com.github.fishkingsin:frescoimageviewer:0.5.0-dev1"){
+        exclude group: "com.android.support"
+        exclude module: "commons-io"
     }
-    compile 'com.android.support:design:25.1.1'
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.android.support:support-v4:25.1.1'
-    compile 'com.android.support:cardview-v7:25.1.1'
-    compile 'com.facebook.fresco:fresco:1.3.0'
-    compile 'com.facebook.fresco:imagepipeline-okhttp:0.8.0+'
-    compile 'com.github.mmin18:realtimeblurview:1.1.0'
-    compile 'jp.wasabeef:fresco-processors:2.0.0'
-    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
-    compile 'com.rengwuxian.materialedittext:library:2.1.4'
-    compile('com.afollestad.material-dialogs:commons:0.9.4.5') {
-        exclude group: 'com.android.support'
-        exclude module: 'commons-io'
+    compile "com.android.support:design:$SUPPORT_LIB_VERSION"
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VERSION"
+    compile "com.android.support:support-v4:$SUPPORT_LIB_VERSION"
+    compile "com.android.support:cardview-v7:$SUPPORT_LIB_VERSION"
+    compile "com.facebook.fresco:fresco:$FRESCO_VERSION"
+    compile "com.facebook.fresco:imagepipeline-okhttp3:$FRESCO_VERSION"
+    compile "com.facebook.fresco:imagepipeline:$FRESCO_VERSION"
+    compile "com.facebook.fresco:webpsupport:$FRESCO_VERSION"
+    compile "com.facebook.fresco:drawee-volley:$FRESCO_VERSION"
+    compile "com.github.mmin18:realtimeblurview:1.1.0"
+    compile "jp.wasabeef:fresco-processors:2.0.0"
+    compile "jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1"
+    compile "com.rengwuxian.materialedittext:library:2.1.4"
+    compile("com.afollestad.material-dialogs:commons:0.9.4.5") {
+        exclude group: "com.android.support"
+        exclude module: "commons-io"
     }
 }
