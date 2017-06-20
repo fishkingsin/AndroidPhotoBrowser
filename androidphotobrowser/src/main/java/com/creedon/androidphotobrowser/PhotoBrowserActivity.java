@@ -10,9 +10,7 @@ import android.widget.CheckBox;
 
 import com.creedon.androidphotobrowser.common.data.models.CustomImage;
 import com.creedon.androidphotobrowser.common.views.ImageOverlayView;
-import com.facebook.drawee.backends.pipeline.*;
-import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
-import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.stfalcon.frescoimageviewer.ImageViewer;
 
 import java.util.ArrayList;
@@ -28,6 +26,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
 
     private static final String KEY_IS_DIALOG_SHOWN = "IS_DIALOG_SHOWN";
     private static final String KEY_CURRENT_POSITION = "CURRENT_POSITION";
+    private OkHttpClient globalOkHttpClient3;
 
     public List<CustomImage> getImages() {
         return images;
@@ -51,7 +50,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     }
 
     private int currentPosition;
-    private boolean isDialogShown;
+    protected boolean isDialogShown;
     protected ArrayList<String> selections;
     protected boolean selectionMode;
 
@@ -65,14 +64,13 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         super.onCreate(savedInstanceState);
         if(!Fresco.hasBeenInitialized()) {
             Context context = this;
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-//                    .addNetworkInterceptor(new StethoInterceptor())
-                    .build();
-            ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
-                    .newBuilder(context, okHttpClient)
-                    .build();
-            Fresco.initialize(context, config);
-//            Fresco.initialize(this);
+//            globalOkHttpClient3 = new OkHttpClient();
+//            ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
+//                    .newBuilder(context,globalOkHttpClient3)
+//                    .setNetworkFetcher(new OkHttp3NetworkFetcher(globalOkHttpClient3))
+//                    .build();
+//            Fresco.initialize(context, config);
+            Fresco.initialize(this);
         }
         init();
         images = getCustomImages();
@@ -110,7 +108,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         };
     }
 
-    private ImageViewer.OnDismissListener getDismissListener() {
+    protected ImageViewer.OnDismissListener getDismissListener() {
         return new ImageViewer.OnDismissListener() {
             @Override
             public void onDismiss() {
@@ -142,6 +140,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
                 .setStartPosition(startPosition)
                 .setImageChangeListener(getImageChangeListener())
                 .setOnDismissListener(getDismissListener())
+                .setOnOrientationListener(getOrientationListener())
                 .show();
     }
 
@@ -320,5 +319,14 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
 
     public void refreshCustomImage() {
         images = getCustomImages();
+    }
+
+    protected ImageViewer.OnOrientationListener getOrientationListener() {
+        return new ImageViewer.OnOrientationListener() {
+            @Override
+            public int OnOrientaion(int currentPosition) {
+                return 0;
+            }
+        };
     }
 }
