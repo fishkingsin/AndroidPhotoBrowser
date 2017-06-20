@@ -283,7 +283,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         return selectionMode;
     }
 
-    private List<CustomImage> getCustomImages() {
+    protected List<CustomImage> getCustomImages() {
         if (listener == null) {
 
         } else {
