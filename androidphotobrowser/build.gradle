@@ -61,7 +61,7 @@ ext {
     SUPPORT_LIB_VERSION="25.1.1"
 }
 dependencies {
-    compile ("com.github.fishkingsin:frescoimageviewer:0.5.0-dev1"){
+    compile ("com.github.fishkingsin:frescoimageviewer:0.5.0-dev2"){
         exclude group: "com.android.support"
         exclude module: "commons-io"
     }
