@@ -282,6 +282,11 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         return selectionMode;
     }
 
+    @Override
+    public int getOrientation(int position) {
+        return 0;
+    }
+
     protected List<CustomImage> getCustomImages() {
         if (listener == null) {
 
