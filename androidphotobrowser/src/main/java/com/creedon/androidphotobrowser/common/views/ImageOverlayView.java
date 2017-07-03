@@ -126,6 +126,8 @@ public class ImageOverlayView extends RelativeLayout {
     public void setDescription(String description) {
         if(!description.equals("")) {
             tvDescription.setText(description);
+        }else{
+            tvDescription.setText(null);
         }
 //        etDescription.setText(description);
         originalDescription = description;
