@@ -6,7 +6,6 @@ import android.graphics.Rect;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -125,9 +124,9 @@ public class ImageOverlayView extends RelativeLayout {
 //    }
 
     public void setDescription(String description) {
-//        if(!description.equals("")) {
+        if(!description.equals("")) {
             tvDescription.setText(description);
-//        }
+        }
 //        etDescription.setText(description);
         originalDescription = description;
     }
