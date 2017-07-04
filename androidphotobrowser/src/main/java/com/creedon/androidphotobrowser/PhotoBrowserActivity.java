@@ -49,7 +49,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         this.currentPosition = currentPosition;
     }
 
-    private int currentPosition;
+    protected int currentPosition;
     protected boolean isDialogShown;
     protected ArrayList<String> selections;
     protected boolean selectionMode;
