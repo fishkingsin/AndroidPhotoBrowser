@@ -223,9 +223,11 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         } else if (i == R.id.deleteAlbum) {
         } else if (i == R.id.delete) {
             //TODO delete item
-        } else if (i == R.id.send) {
-        } else if (i == R.id.download) {
-        } else if (i == android.R.id.home) {
+        }
+//        else if (i == R.id.send) {
+//        } else if (i == R.id.download) {
+//        }
+        else if (i == android.R.id.home) {
             if (!selectionMode) {
                 finish();
             }
