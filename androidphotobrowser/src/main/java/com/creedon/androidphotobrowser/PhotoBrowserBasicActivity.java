@@ -1,6 +1,7 @@
 package com.creedon.androidphotobrowser;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
 
     protected List<String> posters;
     protected List<String> descriptions;
+    protected CoordinatorLayout coordinatorLayout;
 
     public interface PhotoBrowserListener{
         List<String> photoBrowserPhotos(PhotoBrowserBasicActivity activity );
@@ -30,7 +32,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
     public PhotoBrowserListener listener;
     private static final String TAG = PhotoBrowserBasicActivity.class.getSimpleName();
     RecyclerView recyclerView;
-    GridLayoutManager lLayout;
+    protected GridLayoutManager lLayout;
 
 
     public RecyclerViewAdapter getRcAdapter() {
@@ -57,7 +59,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
     protected void init() {
 
         lLayout = new GridLayoutManager(PhotoBrowserBasicActivity.this, 3);
-
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         recyclerView.setHasFixedSize(true);
