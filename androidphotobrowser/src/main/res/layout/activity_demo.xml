@@ -36,7 +36,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/round_corner_button"
                 android:text="Add photos to Playlist"
                 android:textColor="@color/colorDescription"
                 android:tint="@android:color/white"/>
