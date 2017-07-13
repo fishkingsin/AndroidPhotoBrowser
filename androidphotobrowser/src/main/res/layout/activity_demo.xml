@@ -12,17 +12,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="1">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_weight="1"/>
         <!--<include-->
         <!--android:id="@+id/postersContainer"-->
         <!--layout="@layout/content_posters_grid"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"/>-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_weight="1"/>
+        </FrameLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -202,8 +202,10 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
             for (int i = 0; i < selections.size(); i++) {
                 selections.set(i, "0");
             }
+            findViewById(R.id.floatingButton).setVisibility(View.VISIBLE);
         } else {
             //TODO show bottom menu
+            findViewById(R.id.floatingButton).setVisibility(View.INVISIBLE);
         }
         rcAdapter.notifyDataSetChanged();
 
