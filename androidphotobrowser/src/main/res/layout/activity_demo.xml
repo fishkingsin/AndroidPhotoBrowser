@@ -38,7 +38,7 @@
 
                 <Button
                     android:id="@+id/floatingButton"
-                    style="@style/AppTheme.ActionBar.TitleTextStyle"
+                    style="@style/AppTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
@@ -79,15 +79,19 @@
 
                 android:textAlignment="center"/>
 
-            <LinearLayout
-                android:id="@+id/sheetLinearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="1">
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/sheetLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                </LinearLayout>
+
         </LinearLayout>
+
+
 
 
     </android.support.v4.widget.NestedScrollView>
