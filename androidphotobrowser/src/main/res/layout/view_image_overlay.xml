@@ -39,23 +39,23 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:padding="2dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/bin"
                 android:tint="@android:color/white"/>
 
             <ImageButton
-                android:id="@+id/btnSend"
+                android:id="@+id/btnEdit"
                 style="@style/SimpleButtonStyle"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/send"
+                android:src="@drawable/edit"
                 android:tint="@android:color/white"/>
 
             <ImageButton
@@ -64,8 +64,8 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/download_cloud_blue"
                 android:tint="@android:color/white"/>
