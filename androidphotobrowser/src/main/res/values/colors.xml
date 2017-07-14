@@ -3,10 +3,11 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#999999</color>
     <color name="colorAccent">#62b1e6</color>
-    <color name="colorDescription">#ffffff</color>
+    <color name="colorDescription">#4A4A4A</color>
     <color name="accentText">#62b1e6</color>
     <color name="colorDescriptionBackground">#aa000000</color>
     <color name="colorDescriptionHints">#999999</color>
+    <color name="colorTitle">#4A4A4A</color>
 
 
 </resources>
