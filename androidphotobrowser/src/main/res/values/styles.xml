@@ -1,7 +1,8 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light">
-
+        <item name="android:textAllCaps">false</item>
+        <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -138,8 +139,9 @@
     <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/accentText</item>
+        <item name="colorAccent">@color/colorTitle</item>
+        <!--<item name="android:textColorPrimary">@color/accentText</item>-->
+        <item name="android:textColorPrimary">@color/colorTitle</item>
 
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowActionBarOverlay">true</item>
@@ -156,6 +158,7 @@
         <item name="android:textColorPrimary">@color/colorTitle</item>
         <item name="android:textColor">#000</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:titleTextStyle">@style/AppTheme.ActionBar.TitleTextStyle</item>
     </style>
 
     <style name="SimpleButtonStyle" parent="AppTheme">
@@ -174,7 +177,8 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="AppTheme.ActionBar.TitleTextStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textSize">12sp</item>
+    <style name="AppTheme.ActionBar.TitleTextStyle" parent="AppTheme">
+        <item name="android:textSize">16sp</item>
+
     </style>
 </resources>
