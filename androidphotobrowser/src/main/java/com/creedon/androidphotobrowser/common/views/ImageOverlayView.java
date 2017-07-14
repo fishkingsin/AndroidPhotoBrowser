@@ -41,8 +41,6 @@ public class ImageOverlayView extends RelativeLayout {
 
         void onCloseButtonClicked();
 
-        void onEditButtonClick(JSONObject data);
-
         void didEndEditing(JSONObject data, String s);
     }
 
@@ -222,15 +220,6 @@ public class ImageOverlayView extends RelativeLayout {
             public void onClick(View v) {
                 if (listener != null) {
                     listener.onTrashButtonPressed(data);
-                }
-            }
-        });
-        view.findViewById(R.id.btnEdit).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    //TODO dismiss image view
-                    listener.onEditButtonClick(data);
                 }
             }
         });
