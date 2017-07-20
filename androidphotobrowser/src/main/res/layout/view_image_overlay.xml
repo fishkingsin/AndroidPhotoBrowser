@@ -72,14 +72,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:hint="@string/add_a_caption"
             android:imeOptions="actionDone"
             android:padding="@dimen/activity_margin"
             android:visibility="gone"
             app:met_baseColor="@android:color/white"
             app:met_clearButton="true"
             app:met_floatingLabel="highlight"
-            app:met_maxCharacters="160"
             app:met_primaryColor="@color/colorDescriptionHints"
             app:met_singleLineEllipsis="true"
             />

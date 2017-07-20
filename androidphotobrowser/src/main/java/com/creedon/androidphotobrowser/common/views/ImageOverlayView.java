@@ -28,6 +28,11 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 public class ImageOverlayView extends RelativeLayout {
     private static final String TAG = ImageOverlayView.class.getSimpleName();
     private JSONObject data;
+
+    public MaterialAutoCompleteTextView getEtDescription() {
+        return etDescription;
+    }
+
     protected MaterialAutoCompleteTextView etDescription;
     private String originalDescription;
 
@@ -42,6 +47,8 @@ public class ImageOverlayView extends RelativeLayout {
         void onCloseButtonClicked();
 
         void didEndEditing(JSONObject data, String s);
+
+        void onInitTextView(MaterialAutoCompleteTextView etDescription);
     }
 
     TextWatcher textWatcher = new TextWatcher() {
@@ -151,6 +158,7 @@ public class ImageOverlayView extends RelativeLayout {
         View view = inflate(getContext(), R.layout.view_image_overlay, this);
         tvDescription = (TextView) view.findViewById(R.id.tvDescription);
         etDescription = (MaterialAutoCompleteTextView) view.findViewById(R.id.etDescription);
+        listener.onInitTextView(etDescription);
         tvDescription.setVisibility(VISIBLE);
         tvDescription.setMaxLines(4);
         etDescription.setVisibility(GONE);
