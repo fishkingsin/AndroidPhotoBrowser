@@ -49,6 +49,8 @@ public class ImageOverlayView extends RelativeLayout {
         void didEndEditing(JSONObject data, String s);
 
         void onInitTextView(MaterialAutoCompleteTextView etDescription);
+
+        int downloadButtonVisiblity();
     }
 
     TextWatcher textWatcher = new TextWatcher() {
@@ -231,7 +233,7 @@ public class ImageOverlayView extends RelativeLayout {
                 }
             }
         });
-
+        view.findViewById(R.id.btnDownload).setVisibility(listener.downloadButtonVisiblity());
         view.findViewById(R.id.btnDownload).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -35,6 +35,18 @@
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/btnDownload"
+                style="@style/SimpleButtonStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/download_cloud_blue"
+                />
+
+            <ImageButton
                 android:id="@+id/btnTrash"
                 style="@style/SimpleButtonStyle"
                 android:layout_width="50dp"
@@ -46,17 +58,6 @@
                 android:src="@drawable/bin_gray"
                 />
 
-            <ImageButton
-                android:id="@+id/btnDownload"
-                style="@style/SimpleButtonStyle"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/download_cloud_blue"
-                />
         </LinearLayout>
     </LinearLayout>
 
