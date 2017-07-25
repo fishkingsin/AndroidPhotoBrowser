@@ -2,6 +2,7 @@ package com.creedon.androidphotobrowser;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.FrameLayout;
 
 /**
  * _   _ _______   ________ _       _____   __
@@ -14,7 +15,7 @@ import android.util.AttributeSet;
  * Created by jameskong on 21/4/2017.
  */
 
-public class SquareCardView extends android.support.v7.widget.CardView{
+public class SquareCardView extends FrameLayout{
     public SquareCardView(Context context) {
         super(context);
     }

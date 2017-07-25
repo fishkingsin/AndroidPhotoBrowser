@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
+    View mask;
     SimpleDraweeView simpleDraweeView;
     CheckBox checkBox;
 
@@ -18,6 +19,10 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         checkBox = (CheckBox) itemView.findViewById(R.id.checkBox);
         checkBox.setVisibility(View.INVISIBLE);
         checkBox.setClickable(false);
+
+        mask = (View) itemView.findViewById(R.id.mask);
+
+        mask.setVisibility(View.INVISIBLE);
     }
 
     @Override

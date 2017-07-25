@@ -248,8 +248,11 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
             SquareCardView squareCardView = (SquareCardView) view;
             if (squareCardView != null) {
                 CheckBox checkBox = (CheckBox) squareCardView.findViewById(R.id.checkBox);
+                View mask = (View) squareCardView.findViewById(R.id.mask);
                 if (selectionMode) {
-                    checkBox.setChecked(selections.get(position).equals("1"));
+                    boolean selected = selections.get(position).equals("1");
+                    checkBox.setChecked(selected);
+                    mask.setVisibility((selected)?View.VISIBLE:View.INVISIBLE);
                 }
 
             }
@@ -269,8 +272,11 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         SquareCardView squareCardView = (SquareCardView) view;
         if (squareCardView != null) {
             CheckBox checkBox = (CheckBox) squareCardView.findViewById(R.id.checkBox);
+            View mask = (View) squareCardView.findViewById(R.id.mask);
             if (selectionMode) {
-                checkBox.setChecked(selections.get(position).equals("1"));
+                boolean selected = selections.get(position).equals("1");
+                checkBox.setChecked(selected);
+                mask.setVisibility((selected)?View.VISIBLE:View.INVISIBLE);
             }
 
         }

@@ -117,6 +117,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             CheckBox checkBox = holder.checkBox;
             checkBox.setVisibility(selectionMode ? View.VISIBLE : View.INVISIBLE);
             checkBox.setChecked(selectionMode && selection);
+
+            View mask = holder.mask;
+            mask.setVisibility((selectionMode && selection) ? View.VISIBLE : View.INVISIBLE);
         }
 
 
