@@ -21,6 +21,8 @@ import com.facebook.imagepipeline.common.RotationOptions;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
@@ -47,10 +49,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             Log.e(TAG, "RecyclerViewAdapterListener not found");
         }
     }
-    public  void remove(int position){
+
+    public void remove(int position) {
         notifyItemRemoved(position);
     }
-    public  void remove(int position, List<String> datas){
+
+    public void remove(int position, List<String> datas) {
         if (itemList != null) {
             itemList.clear();
             itemList.addAll(datas);
@@ -59,18 +63,42 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         }
         notifyItemRemoved(position);
     }
+
     //https://stackoverflow.com/questions/30053610/best-way-to-update-data-with-a-recyclerview-adapter
     public void swap(List<String> datas) {
-
-        if (itemList != null) {
-            itemList.clear();
-            itemList.addAll(datas);
-        } else {
-            itemList = datas;
+        if (!equalLists(datas, itemList)) {
+            if (itemList != null) {
+                itemList.clear();
+                itemList.addAll(datas);
+            } else {
+                itemList = datas;
+            }
+            //TODO check element are equals to input
+            notifyDataSetChanged();
+            ;
         }
-        //TODO check element are equals to input
-        //notifyDataSetChanged();;
 
+    }
+
+    private boolean equalLists(List<String> one, List<String> two) {
+        if (one == null && two == null) {
+            return true;
+        }
+
+        if ((one == null && two != null)
+                || one != null && two == null
+                || one.size() != two.size()) {
+            return false;
+        }
+
+        //to avoid messing the order of the lists we will use a copy
+        //as noted in comments by A. R. S.
+        one = new ArrayList<String>(one);
+        two = new ArrayList<String>(two);
+
+        Collections.sort(one);
+        Collections.sort(two);
+        return one.equals(two);
     }
 
     @Override
@@ -137,9 +165,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public int getItemCount() {
-        if(this.itemList != null) {
+        if (this.itemList != null) {
             return this.itemList.size();
-        }else{
+        } else {
             return 0;
         }
     }
