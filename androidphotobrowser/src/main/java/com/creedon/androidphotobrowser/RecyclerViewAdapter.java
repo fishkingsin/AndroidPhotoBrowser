@@ -99,13 +99,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         final Drawable placeholderDrawable = context.getResources().getDrawable(R.drawable.loading);
         holder.simpleDraweeView.getHierarchy().
 
-                setPlaceholderImage(placeholderDrawable, ScalingUtils.ScaleType.CENTER_INSIDE);
+                setPlaceholderImage(placeholderDrawable, ScalingUtils.ScaleType.FIT_CENTER);
         holder.simpleDraweeView.getHierarchy().
 
-                setFailureImage(failureDrawable, ScalingUtils.ScaleType.CENTER_INSIDE);
+                setFailureImage(failureDrawable, ScalingUtils.ScaleType.FIT_CENTER);
         holder.simpleDraweeView.getHierarchy().
 
-                setProgressBarImage(progressBarDrawable, ScalingUtils.ScaleType.CENTER_INSIDE);
+                setProgressBarImage(progressBarDrawable, ScalingUtils.ScaleType.FIT_CENTER);
 
         holder.simpleDraweeView.setController(controller);
 //                        holder.simpleDraweeView.setImageURI(itemList.get(position));
