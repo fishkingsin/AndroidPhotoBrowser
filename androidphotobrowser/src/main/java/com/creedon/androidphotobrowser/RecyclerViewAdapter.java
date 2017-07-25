@@ -2,6 +2,7 @@ package com.creedon.androidphotobrowser;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v4.graphics.drawable.DrawableCompat;
@@ -12,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import com.creedon.androidphotobrowser.common.views.CircleProgressBarDrawable;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.drawable.ProgressBarDrawable;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.imagepipeline.common.RotationOptions;
@@ -46,7 +47,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             Log.e(TAG, "RecyclerViewAdapterListener not found");
         }
     }
-
+    public  void remove(int position){
+        notifyItemRemoved(position);
+    }
+    public  void remove(int position, List<String> datas){
+        if (itemList != null) {
+            itemList.clear();
+            itemList.addAll(datas);
+        } else {
+            itemList = datas;
+        }
+        notifyItemRemoved(position);
+    }
     //https://stackoverflow.com/questions/30053610/best-way-to-update-data-with-a-recyclerview-adapter
     public void swap(List<String> datas) {
 
@@ -56,7 +68,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         } else {
             itemList = datas;
         }
-        notifyDataSetChanged();
+        //TODO check element are equals to input
+        //notifyDataSetChanged();;
+
     }
 
     @Override
@@ -85,18 +99,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
                 .setImageRequest(imageRequest)
                 .build();
-        ProgressBarDrawable progressBarDrawable = new ProgressBarDrawable();
-        progressBarDrawable.setColor(context.getResources().
+        CircleProgressBarDrawable progressBarDrawable = new CircleProgressBarDrawable();
+        progressBarDrawable.setColor(Color.WHITE);
 
-                getColor(R.color.colorAccent));
-        progressBarDrawable.setBackgroundColor(context.getResources().
-
-                getColor(R.color.colorPrimaryDark));
         progressBarDrawable
-                .setRadius(5);
+                .setRadius(20);
         final Drawable failureDrawable = context.getResources().getDrawable(R.drawable.missing);
-        DrawableCompat.setTint(failureDrawable, Color.RED);
-        final Drawable placeholderDrawable = context.getResources().getDrawable(R.drawable.loading);
+        DrawableCompat.setTint(failureDrawable, Color.WHITE);
+        final Drawable placeholderDrawable = new ColorDrawable(Color.BLACK);//context.getResources().getDrawable(R.drawable.loading);
         holder.simpleDraweeView.getHierarchy().
 
                 setPlaceholderImage(placeholderDrawable, ScalingUtils.ScaleType.FIT_CENTER);

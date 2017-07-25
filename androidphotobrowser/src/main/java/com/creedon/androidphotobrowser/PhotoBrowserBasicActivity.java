@@ -32,7 +32,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
     }
     public PhotoBrowserListener listener;
     private static final String TAG = PhotoBrowserBasicActivity.class.getSimpleName();
-    RecyclerView recyclerView;
+    protected RecyclerView recyclerView;
     protected GridLayoutManager lLayout;
 
 
@@ -75,6 +75,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
         recyclerView.setAdapter(rcAdapter);
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(PhotoBrowserBasicActivity.this, recyclerView, this));
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, 1, true, 0));
+
 
     }
 
