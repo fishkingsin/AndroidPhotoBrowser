@@ -129,6 +129,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
                 .build();
         CircleProgressBarDrawable progressBarDrawable = new CircleProgressBarDrawable();
         progressBarDrawable.setColor(Color.WHITE);
+        progressBarDrawable.setBackgroundColor(Color.DKGRAY);
 
         progressBarDrawable
                 .setRadius(20);
