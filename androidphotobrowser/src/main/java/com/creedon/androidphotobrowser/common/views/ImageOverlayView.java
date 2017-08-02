@@ -130,14 +130,14 @@ public class ImageOverlayView extends RelativeLayout {
 //        return super.dispatchTouchEvent(event);
 //    }
 
-    public void setDescription(String description) {
+    public void setDescription(String description, String _originalDescription) {
         if(!description.equals("")) {
             tvDescription.setText(description);
         }else{
             tvDescription.setText(null);
         }
 //        etDescription.setText(description);
-        originalDescription = description;
+        originalDescription = _originalDescription;
     }
 
     public void setData(JSONObject jsonObject) {

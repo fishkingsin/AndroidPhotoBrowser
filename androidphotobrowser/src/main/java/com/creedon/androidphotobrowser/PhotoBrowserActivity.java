@@ -103,7 +103,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
             public void onImageChange(int position) {
                 CustomImage image = images.get(position);
                 overlayView.setShareText(image.getUrl());
-                overlayView.setDescription(image.getDescription());
+                overlayView.setDescription(image.getDescription(),image.getDescription());
             }
         };
     }
