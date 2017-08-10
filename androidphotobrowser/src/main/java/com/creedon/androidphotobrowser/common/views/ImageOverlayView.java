@@ -27,14 +27,14 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
  */
 public class ImageOverlayView extends RelativeLayout {
     private static final String TAG = ImageOverlayView.class.getSimpleName();
-    private JSONObject data;
+    protected JSONObject data;
 
     public MaterialAutoCompleteTextView getEtDescription() {
         return etDescription;
     }
 
     protected MaterialAutoCompleteTextView etDescription;
-    private String originalDescription;
+    protected String originalDescription;
 
     public interface ImageOverlayVieListener {
 
@@ -53,7 +53,7 @@ public class ImageOverlayView extends RelativeLayout {
         int downloadButtonVisiblity();
     }
 
-    TextWatcher textWatcher = new TextWatcher() {
+    protected TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -75,7 +75,7 @@ public class ImageOverlayView extends RelativeLayout {
             }
         }
     };
-    private TextView tvDescription;
+    protected TextView tvDescription;
 
     private String sharingText;
 
@@ -254,7 +254,7 @@ public class ImageOverlayView extends RelativeLayout {
         return view;
     }
 
-    private void didEndEditing() {
+    protected void didEndEditing() {
 
         if (listener != null) {
             listener.didEndEditing(data, etDescription.getText().toString());
