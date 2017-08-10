@@ -2,7 +2,7 @@
 apply plugin: "com.android.library"
 apply plugin: "com.novoda.bintray-release"
 
-def publishVersionName="0.0.30"
+def publishVersionName="0.0.32"
 buildscript {
     repositories {
         jcenter()
