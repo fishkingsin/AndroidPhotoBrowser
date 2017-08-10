@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.creedon.androidphotobrowser.R;
-import com.rengwuxian.materialedittext.MaterialAutoCompleteTextView;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.json.JSONObject;
 
@@ -29,11 +29,11 @@ public class ImageOverlayView extends RelativeLayout {
     private static final String TAG = ImageOverlayView.class.getSimpleName();
     protected JSONObject data;
 
-    public MaterialAutoCompleteTextView getEtDescription() {
+    public MaterialEditText getEtDescription() {
         return etDescription;
     }
 
-    protected MaterialAutoCompleteTextView etDescription;
+    protected MaterialEditText etDescription;
     protected String originalDescription;
 
     public interface ImageOverlayVieListener {
@@ -48,7 +48,7 @@ public class ImageOverlayView extends RelativeLayout {
 
         void didEndEditing(JSONObject data, String s);
 
-        void onInitTextView(MaterialAutoCompleteTextView etDescription);
+        void onInitTextView(MaterialEditText etDescription);
 
         int downloadButtonVisiblity();
     }
@@ -134,7 +134,7 @@ public class ImageOverlayView extends RelativeLayout {
         if(!description.equals("")) {
             tvDescription.setText(description);
         }else{
-            tvDescription.setText(null);
+            tvDescription.setText("");
         }
 //        etDescription.setText(description);
         originalDescription = _originalDescription;
@@ -159,7 +159,7 @@ public class ImageOverlayView extends RelativeLayout {
     protected View init() {
         View view = inflate(getContext(), R.layout.view_image_overlay, this);
         tvDescription = (TextView) view.findViewById(R.id.tvDescription);
-        etDescription = (MaterialAutoCompleteTextView) view.findViewById(R.id.etDescription);
+        etDescription = (MaterialEditText) view.findViewById(R.id.etDescription);
         listener.onInitTextView(etDescription);
         tvDescription.setVisibility(VISIBLE);
         tvDescription.setMaxLines(4);
@@ -198,6 +198,7 @@ public class ImageOverlayView extends RelativeLayout {
                     tvDescription.setVisibility(GONE);
                     etDescription.setVisibility(VISIBLE);
                     etDescription.setFocusableInTouchMode(true);
+                    etDescription.setFloatingLabel(MaterialEditText.FLOATING_LABEL_HIGHLIGHT);
                     etDescription.requestFocus();
                     InputMethodManager lManager = (InputMethodManager)  getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     lManager.showSoftInput(etDescription, 0);
@@ -259,9 +260,11 @@ public class ImageOverlayView extends RelativeLayout {
         if (listener != null) {
             listener.didEndEditing(data, etDescription.getText().toString());
         }
-//        if(!etDescription.getText().toString().equals("")) {
-        tvDescription.setText(etDescription.getText().toString());
-//        }
+        if(!etDescription.getText().toString().equals("") && !etDescription.getText().toString().equals(" ")) {
+            tvDescription.setText(etDescription.getText().toString());
+        }else{
+            tvDescription.setText(etDescription.getFloatingLabelText().toString());
+        }
         originalDescription = etDescription.getText().toString();
         etDescription.removeTextChangedListener(textWatcher);
         //TODO fire caption chaged lister

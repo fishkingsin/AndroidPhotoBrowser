@@ -68,7 +68,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorDescriptionBackground">
 
-        <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/etDescription"
             style="@style/DescriptionText"
             android:layout_width="match_parent"
@@ -87,7 +87,6 @@
         <TextView
             android:id="@+id/tvDescription"
             android:textColor="@color/colorDescription"
-            android:hint="@string/add_a_caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
