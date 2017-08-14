@@ -46,7 +46,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_demo);
+        setContentView(R.layout.activity_photobrowser);
 
 
     }
