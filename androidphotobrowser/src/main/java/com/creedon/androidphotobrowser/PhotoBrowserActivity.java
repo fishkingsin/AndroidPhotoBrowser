@@ -64,12 +64,6 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         super.onCreate(savedInstanceState);
         if(!Fresco.hasBeenInitialized()) {
             Context context = this;
-//            globalOkHttpClient3 = new OkHttpClient();
-//            ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
-//                    .newBuilder(context,globalOkHttpClient3)
-//                    .setNetworkFetcher(new OkHttp3NetworkFetcher(globalOkHttpClient3))
-//                    .build();
-//            Fresco.initialize(context, config);
             Fresco.initialize(this);
         }
         init();
@@ -166,12 +160,6 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-//        MenuItem actionViewItem = menu.findItem(R.id.miActionButton);
-//        // Retrieve the action-view from menu
-//        View v = MenuItemCompat.getActionView(actionViewItem);
-//        // Find the button within action-view
-//        Button b = (Button) v.findViewById(R.id.btnCustomAction);
-        // Handle button click here
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -226,9 +214,6 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         } else if (i == R.id.delete) {
             //TODO delete item
         }
-//        else if (i == R.id.send) {
-//        } else if (i == R.id.download) {
-//        }
         else if (i == android.R.id.home) {
             if (!selectionMode) {
                 finish();
