@@ -51,6 +51,8 @@ public class ImageOverlayView extends RelativeLayout {
         void onInitTextView(MaterialEditText etDescription);
 
         int downloadButtonVisiblity();
+
+        int trashButtonVisiblity();
     }
 
     protected TextWatcher textWatcher = new TextWatcher() {
@@ -225,7 +227,7 @@ public class ImageOverlayView extends RelativeLayout {
 
 
         });
-
+        view.findViewById(R.id.btnTrash).setVisibility(listener.trashButtonVisiblity());
         view.findViewById(R.id.btnTrash).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
