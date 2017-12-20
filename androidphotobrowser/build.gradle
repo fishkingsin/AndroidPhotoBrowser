@@ -2,14 +2,14 @@
 apply plugin: "com.android.library"
 apply plugin: "com.novoda.bintray-release"
 
-def publishVersionName="0.0.34"
+def publishVersionName="0.1.0-dev1"
 buildscript {
     repositories {
         jcenter()
 
     }
     dependencies {
-        classpath "com.novoda:bintray-release:0.5.0"
+        classpath "com.novoda:bintray-release:0.7.0"
     }
 }
 android {
@@ -61,14 +61,14 @@ ext {
     SUPPORT_LIB_VERSION="25.1.1"
 }
 dependencies {
-   compile ("com.github.fishkingsin:frescoimageviewer:0.5.0-dev6"){
-       exclude group: "com.android.support"
-       exclude module: "commons-io"
-   }
-//    compile project(":frescoimageviewer") {
-//        exclude group: "com.android.support"
-//        exclude module: "commons-io"
-//    }
+    compile('com.github.fishkingsin:frescoimageviewer:0.5.0-dev6') {
+        exclude group: "com.android.support"
+        exclude module: "commons-io"
+    }
+    //    compile project(":frescoimageviewer") {
+    //        exclude group: "com.android.support"
+    //        exclude module: "commons-io"
+    //    }
     compile "com.android.support:design:$SUPPORT_LIB_VERSION"
     compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VERSION"
     compile "com.android.support:support-v4:$SUPPORT_LIB_VERSION"
@@ -79,11 +79,11 @@ dependencies {
     compile "com.facebook.fresco:imagepipeline:$FRESCO_VERSION"
     compile "com.facebook.fresco:webpsupport:$FRESCO_VERSION"
     compile "com.facebook.fresco:drawee-volley:$FRESCO_VERSION"
-    compile "com.github.mmin18:realtimeblurview:1.1.0"
-    compile "jp.wasabeef:fresco-processors:2.0.0"
-    compile "jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1"
-    compile "com.rengwuxian.materialedittext:library:2.1.4"
-    compile("com.afollestad.material-dialogs:commons:0.9.4.5") {
+    compile 'com.github.mmin18:realtimeblurview:1.1.0'
+    compile 'jp.wasabeef:fresco-processors:2.0.0'
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile('com.afollestad.material-dialogs:commons:0.9.4.5') {
         exclude module: "commons-io"
         exclude group: 'com.android.support', module: 'support-v13'
         exclude group: 'com.android.support', module: 'support-v4'
@@ -92,5 +92,5 @@ dependencies {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
-
+    compile project(':k4l-video-trimmer')
 }
