@@ -33,6 +33,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
     }
 
     private List<CustomImage> images;
+    private List<String> thumbnails;
     protected ImageViewer imageViewer;
 
     public ImageOverlayView getOverlayView() {
@@ -68,6 +69,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         }
         init();
         images = getCustomImages();
+        thumbnails = getThumbnails();
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -135,6 +137,7 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
                 .setImageChangeListener(getImageChangeListener())
                 .setOnDismissListener(getDismissListener())
                 .setOnOrientationListener(getOrientationListener())
+                .setThumbnails(thumbnails)
                 .show();
     }
 
@@ -315,6 +318,14 @@ public class PhotoBrowserActivity extends PhotoBrowserBasicActivity implements R
         }
         return null;
 
+    }
+
+    protected List<String> getThumbnails() {
+        if (listener == null) {
+            return null;
+        } else {
+            return listener.photoBrowserThumbnails(this);
+        }
     }
 
     public void refreshCustomImage() {

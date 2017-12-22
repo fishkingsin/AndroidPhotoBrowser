@@ -71,7 +71,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
         descriptions = listener.photoBrowserPhotoCaptions(this);
 
 
-        rcAdapter = new RecyclerViewAdapter(this, thumbnails);
+        rcAdapter = new RecyclerViewAdapter(this, thumbnails, posters);
         recyclerView.setAdapter(rcAdapter);
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(PhotoBrowserBasicActivity.this, recyclerView, this));
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, 1, true, 0));

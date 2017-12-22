@@ -38,11 +38,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     RecyclerViewAdapterListener listener;
     private List<String> itemList;
+    private List<String> mediaUrls;
     private Context context;
 
-    public RecyclerViewAdapter(Context context, List<String> itemList) {
+    public RecyclerViewAdapter(Context context, List<String> itemList, List<String> mediaUrls) {
         this.itemList = itemList;
         this.context = context;
+        this.mediaUrls = mediaUrls;
         try {
             listener = (RecyclerViewAdapterListener) context;
         } catch (Exception e) {
@@ -113,6 +115,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     @Override
     public void onBindViewHolder(final RecyclerViewHolders holder, final int position) {
         int orientation = 0;
+
+        String mediaUrl = mediaUrls.get(position);
+        holder.setVideoIcon(mediaUrl.contains(".mp4") || mediaUrl.contains(".3gp") || mediaUrl.contains(".m4a") || mediaUrl.contains(".mkv"));
+
         if (listener != null) {
             orientation = listener.getOrientation(position);
         }
