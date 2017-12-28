@@ -157,6 +157,11 @@ public class MainActivity extends PhotoBrowserActivity implements PhotoBrowserBa
     }
 
     @Override
+    public List<String> photoBrowserVideos(PhotoBrowserBasicActivity activity) {
+        return _previewUrls;
+    }
+
+    @Override
     public List<String> photoBrowserThumbnails(PhotoBrowserBasicActivity activity) {
         return _thumbnailUrls;
     }

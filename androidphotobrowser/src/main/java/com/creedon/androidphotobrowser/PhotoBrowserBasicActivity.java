@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.creedon.androidphotobrowser.common.data.models.CustomImage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -23,6 +24,7 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
 
     public interface PhotoBrowserListener{
         List<String> photoBrowserPhotos(PhotoBrowserBasicActivity activity );
+        List<String> photoBrowserVideos(PhotoBrowserBasicActivity activity );
         List<String> photoBrowserThumbnails(PhotoBrowserBasicActivity activity );
         String photoBrowserPhotoAtIndex(PhotoBrowserBasicActivity activity , int index);
         List<String> photoBrowserPhotoCaptions(PhotoBrowserBasicActivity photoBrowserBasicActivity);
@@ -70,8 +72,18 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
         posters = listener.photoBrowserPhotos(this);
         descriptions = listener.photoBrowserPhotoCaptions(this);
 
+        List<String> videoUrls = listener.photoBrowserVideos(this);
+        List<String> mediaUrls = new ArrayList<>();
 
-        rcAdapter = new RecyclerViewAdapter(this, thumbnails, posters);
+        for (int i=0; i<posters.size(); i++) {
+            if (!videoUrls.get(i).isEmpty()) {
+                mediaUrls.add(videoUrls.get(i));
+            } else {
+                mediaUrls.add(posters.get(i));
+            }
+        }
+
+        rcAdapter = new RecyclerViewAdapter(this, thumbnails, mediaUrls);
         recyclerView.setAdapter(rcAdapter);
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(PhotoBrowserBasicActivity.this, recyclerView, this));
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, 1, true, 0));
