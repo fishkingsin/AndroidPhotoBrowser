@@ -75,11 +75,13 @@ public abstract class PhotoBrowserBasicActivity extends AppCompatActivity implem
         List<String> videoUrls = listener.photoBrowserVideos(this);
         List<String> mediaUrls = new ArrayList<>();
 
-        for (int i=0; i<posters.size(); i++) {
-            if (!videoUrls.get(i).isEmpty()) {
-                mediaUrls.add(videoUrls.get(i));
-            } else {
-                mediaUrls.add(posters.get(i));
+        if (posters != null) {
+            for (int i = 0; i < posters.size(); i++) {
+                if (!videoUrls.get(i).isEmpty()) {
+                    mediaUrls.add(videoUrls.get(i));
+                } else {
+                    mediaUrls.add(posters.get(i));
+                }
             }
         }
 
