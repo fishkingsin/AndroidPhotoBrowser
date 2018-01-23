@@ -1,17 +1,25 @@
 package com.creedon.androidphotobrowser;
 
+import android.media.MediaMetadataRetriever;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
 public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private static final long ONE_HOUR = 36000000;
     View mask;
     SimpleDraweeView simpleDraweeView;
     CheckBox checkBox;
     ImageView videoIcon;
+    TextView videoDuration;
 
     public RecyclerViewHolders(View itemView) {
         super(itemView);
@@ -26,6 +34,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
 
         mask.setVisibility(View.INVISIBLE);
         videoIcon = (ImageView) itemView.findViewById(R.id.iv_videoIcon);
+        videoDuration = (TextView) itemView.findViewById(R.id.tv_videoDuration);
     }
 
     @Override
@@ -33,7 +42,35 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
 //            Toast.makeText(view.getContext(), "Clicked Country Position = " + getPosition(), Toast.LENGTH_SHORT).show();
     }
 
-    public void setVideoIcon(boolean isVisible){
+    public void setVideoIconAndDuration(boolean isVisible, String url){
         videoIcon.setVisibility(isVisible ? View.VISIBLE : View.INVISIBLE);
+
+        if (isVisible) {
+            MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+            retriever.setDataSource(url, new HashMap<String, String>());
+
+            String mVideoDuration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            long timeinMillis = Long.parseLong(mVideoDuration);
+            videoDuration.setText(convertMillisToFormat(timeinMillis));
+            videoDuration.setVisibility(View.VISIBLE);
+        } else {
+            videoDuration.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private String convertMillisToFormat(long millis) {
+        String hms;
+
+        if (millis >= ONE_HOUR) {
+            hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
+                    TimeUnit.MILLISECONDS.toMinutes(millis) % TimeUnit.HOURS.toMinutes(1),
+                    TimeUnit.MILLISECONDS.toSeconds(millis) % TimeUnit.MINUTES.toSeconds(1));
+        } else {
+            hms = String.format("%02d:%02d",
+                    TimeUnit.MILLISECONDS.toMinutes(millis) % TimeUnit.HOURS.toMinutes(1),
+                    TimeUnit.MILLISECONDS.toSeconds(millis) % TimeUnit.MINUTES.toSeconds(1));
+        }
+
+        return hms;
     }
 }

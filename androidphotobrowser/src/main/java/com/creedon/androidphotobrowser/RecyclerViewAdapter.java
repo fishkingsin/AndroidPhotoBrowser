@@ -117,7 +117,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         int orientation = 0;
 
         String mediaUrl = mediaUrls.get(position);
-        holder.setVideoIcon(mediaUrl.contains(".mp4") || mediaUrl.contains(".3gp") || mediaUrl.contains(".m4a") || mediaUrl.contains(".mkv"));
+        holder.setVideoIconAndDuration(mediaUrl.contains(".mp4") || mediaUrl.contains(".3gp") || mediaUrl.contains(".m4a") || mediaUrl.contains(".mkv"), mediaUrl);
 
         if (listener != null) {
             orientation = listener.getOrientation(position);
