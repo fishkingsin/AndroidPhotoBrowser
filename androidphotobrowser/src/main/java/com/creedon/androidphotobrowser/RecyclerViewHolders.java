@@ -1,8 +1,8 @@
 package com.creedon.androidphotobrowser;
 
 import android.media.MediaMetadataRetriever;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -46,13 +46,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         videoIcon.setVisibility(isVisible ? View.VISIBLE : View.INVISIBLE);
 
         if (isVisible) {
-            MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-            retriever.setDataSource(url, new HashMap<String, String>());
-
-            String mVideoDuration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
-            long timeinMillis = Long.parseLong(mVideoDuration);
-            videoDuration.setText(convertMillisToFormat(timeinMillis));
-            videoDuration.setVisibility(View.VISIBLE);
+            new MetaDataTask(url).execute();
         } else {
             videoDuration.setVisibility(View.INVISIBLE);
         }
@@ -72,5 +66,38 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         }
 
         return hms;
+    }
+
+    class MetaDataTask extends AsyncTask<Void, Integer, Long> {
+
+        String url;
+
+        MetaDataTask(String url) {
+            this.url = url;
+        }
+
+        @Override
+        protected Long doInBackground(Void... voids) {
+            try {
+                MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+                retriever.setDataSource(url, new HashMap<String, String>());
+
+                String mVideoDuration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+                return Long.parseLong(mVideoDuration);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return -1L;
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(Long result) {
+            if (result != -1L) {
+                videoDuration.setText(convertMillisToFormat(result));
+                videoDuration.setVisibility(View.VISIBLE);
+            }
+        }
     }
 }
